@@ -1,0 +1,213 @@
+/* === Amazon Sign-In móvil — fidelidad alta === */
+
+.login-section {
+    padding: 16px 16px 24px;
+}
+
+/* Título */
+.welcome-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: #0f1111;
+    margin-bottom: 14px;
+    line-height: 1.3;
+}
+
+/* Email display en paso de contraseña */
+.email-display {
+    margin-bottom: 14px;
+    font-size: 14px;
+    color: #0f1111;
+}
+
+.email-text {
+    font-weight: 400;
+    margin-right: 8px;
+}
+
+.change-link {
+    color: #2162a1;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* Form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f1111;
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+
+.input-field {
+    width: 100%;
+    height: 40px;
+    padding: 6px 10px;
+    font-size: 16px;
+    border: 1px solid #888c8c;
+    border-radius: 4px;
+    outline: none;
+    background-color: #fff;
+    color: #0f1111;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.input-field:focus {
+    border-color: #e77600;
+    box-shadow: 0 0 0 3px rgba(228, 121, 17, 0.5);
+}
+
+.input-field::placeholder {
+    color: #aab7b8;
+    font-size: 14px;
+}
+
+/* Password options */
+.password-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.show-password {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #0f1111;
+    cursor: pointer;
+}
+
+.show-password input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #007185;
+    cursor: pointer;
+}
+
+.forgot-link {
+    font-size: 14px;
+    color: #2162a1;
+    text-decoration: none;
+}
+
+/* Botón amarillo redondeado (pill) */
+.continue-btn {
+    width: 100%;
+    height: 48px;
+    margin-top: 18px;
+    margin-bottom: 16px;
+    background: #FFD814;
+    border: 1px solid #FCD200;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #0f1111;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.continue-btn:hover {
+    background: #F7CA00;
+}
+
+.continue-btn:active {
+    background: #F2C200;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2) inset;
+}
+
+/* Terms */
+.terms-text {
+    font-size: 13px;
+    color: #0f1111;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.terms-text .link {
+    color: #2162a1;
+    text-decoration: underline;
+}
+
+/* Divider simple */
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: #e7e7e7;
+    margin: 16px 0;
+}
+
+/* Divider con "or" */
+.divider-or {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: #767676;
+}
+
+.divider-or::before,
+.divider-or::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e7e7e7;
+}
+
+/* Botón passkey (borde, sin relleno) */
+.passkey-btn {
+    width: 100%;
+    height: 48px;
+    background: #fff;
+    border: 1px solid #888c8c;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #0f1111;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    margin-bottom: 10px;
+}
+
+.passkey-btn:hover {
+    background: #f7f7f7;
+}
+
+/* Need help & Buying for work */
+.need-help-link {
+    font-size: 14px;
+    color: #2162a1;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.business-section {
+    margin-top: 0;
+}
+
+.business-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f1111;
+    margin-bottom: 4px;
+}
+
+.business-link {
+    font-size: 14px;
+    color: #2162a1;
+    text-decoration: none;
+}

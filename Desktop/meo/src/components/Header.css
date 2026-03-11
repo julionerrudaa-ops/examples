@@ -1,0 +1,16 @@
+/* Header oscuro Amazon móvil — logo a la izquierda */
+.header {
+    background: #232f3e;
+    width: 100%;
+    padding: 10px 16px;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+}
+
+.amazon-logo {
+    height: 28px;
+    width: auto;
+}
